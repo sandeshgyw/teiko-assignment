@@ -158,8 +158,14 @@ for axis, population in zip(axes, populations):
         [responders, nonresponders],
         tick_labels=["Responder", "Nonresponder"],
     )
-
-    axis.set_title(population)
+    population_labels = {
+    "b_cell": "B cell",
+    "cd4_t_cell": "CD4 T cell",
+    "cd8_t_cell": "CD8 T cell",
+    "monocyte": "Monocyte",
+    "nk_cell": "NK cell",
+}
+    axis.set_title(population_labels[population])
     axis.set_xlabel("Response")
 
 axes[0].set_ylabel("Relative frequency (%)")
