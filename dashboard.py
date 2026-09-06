@@ -1,20 +1,65 @@
 import sqlite3
+
 from pathlib import Path
 
 import pandas as pd
+
 import streamlit as st
 
 from load_data import main as load_database
 
 DATABASE_FILE = "cell_counts.db"
 
-if not Path(DATABASE_FILE).exists():
-    load_database()
+def ensure_database():
 
+    needs_rebuild = not Path(DATABASE_FILE).exists()
+
+    if not needs_rebuild:
+
+        connection = sqlite3.connect(DATABASE_FILE)
+
+        tables = connection.execute(
+
+            """
+
+            SELECT name
+
+            FROM sqlite_master
+
+            WHERE type='table'
+
+            """
+
+        ).fetchall()
+
+        connection.close()
+
+        table_names = {table[0] for table in tables}
+
+        required_tables = {
+
+            "subjects",
+
+            "samples",
+
+            "cell_counts",
+
+        }
+
+        needs_rebuild = not required_tables.issubset(table_names)
+
+    if needs_rebuild:
+
+        load_database()
+
+ensure_database()
 
 st.set_page_config(
-    page_title="Immune Cell Analysis",
+
+    page_title="Teiko Immune Cell Analysis",
+
     layout="wide",
+
 )
 
 st.title("Immune Cell Analysis Dashboard")
