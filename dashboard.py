@@ -1,10 +1,15 @@
 import sqlite3
+from pathlib import Path
 
 import pandas as pd
 import streamlit as st
 
+from load_data import main as load_database
 
 DATABASE_FILE = "cell_counts.db"
+
+if not Path(DATABASE_FILE).exists():
+    load_database()
 
 
 st.set_page_config(
