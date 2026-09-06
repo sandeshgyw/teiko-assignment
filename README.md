@@ -228,7 +228,7 @@ Run it with:
 make dashboard
 ```
 
-Dashboard URL:
+Dashboard URL: https://teiko-immune-cell-analysis.streamlit.app/
 
 ```text
 ADD DEPLOYED DASHBOARD URL HERE
