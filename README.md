@@ -230,10 +230,6 @@ make dashboard
 
 Dashboard URL: https://teiko-immune-cell-analysis.streamlit.app/
 
-```text
-ADD DEPLOYED DASHBOARD URL HERE
-```
-
 ## Generated Outputs
 
 Running the pipeline generates:
