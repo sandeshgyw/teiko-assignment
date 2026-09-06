@@ -10,4 +10,4 @@ pipeline:
 	python3 query_subsets.py
 
 dashboard:
-	python3 -m streamlit run dashboard_app.py
+	python3 -m streamlit run dashboard.py
